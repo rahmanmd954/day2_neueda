@@ -39,12 +39,11 @@ Break for lunch
 
 Afternoon Session:
 
-* Break out into teams for the final afternoon challenge
+* The final challenge
 * Scores will be calculated and announced
-* Presentations from the winning teams
-* Prizes (if you're lucky!) will be given out
+* Prizes (if you're lucky!) will be given out!
 
-Note that your instructor may change this schedule based on the needs of the group. So don't hold them to it.
+Note that your instructor may change this schedule based on the needs of the group. So please don't hold them to it!
 
 ## Morning JAM Session
 
@@ -80,6 +79,7 @@ This is a problematic React application. It has a dodgy menu option. Can you sor
 
 ### Challenge 6 - [Upgrade Required](challenges/upgrade-required/readme.md)
 This is an old Perl app that needs to be upgraded to Python. Can you take on the challenge with the help of AI?
+
 **500 points**
 
 ## Afternoon JAM Session
