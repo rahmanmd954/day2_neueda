@@ -15,9 +15,25 @@ Each challenge can be found in a subfolder in the this Git repository.
 
 ## Pre-requisites
 In order to complete this session, you will need to have the following:
+
 - The ability to clone this repository to the machine you are using for the JAM session
 - The ability to install and run different tools and applications (if you are using one of our VMs, then these will be pre-installed)
 - Access to at least one Developer centric GenAI tool such as Github CoPilot, SourceGraph Cody, or Amazon Q. 
+
+## Setting up your VM Environment
+If you are using a VM, then complete the following steps:
+
+### Clone the Repository
+1. Using your virtual machine, open your preferred browser and navigate to this page http://go.neueda.com/jam. You have probably already done this since you are reading the instructions! But make sure you are doing this from the virtual machine browser, not your local machine.
+2. At the top of this Web page in BitBucket, click the **Clone** button.
+3. Click **Clone** again.
+4. Copy the URL.
+5. In your virtual machine, create a new folder called **C:\GenAIJam**.
+6. Using **Windows Explorer**, right click on your **c:\GenAIJam** folder, and then click **Git Bash here**.
+7. At the **Git bash terminal**, right click, and then click **Paste** to paste in the git clone command, and then press **Enter**.
+
+
+
 
 ## Project Teams - Playing to win or playing to learn?
 
