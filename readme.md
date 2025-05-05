@@ -77,7 +77,7 @@ This is a problematic React application. It has a dodgy menu option. Can you sor
 
 **300 points**
 
-### Challenge 6 - [Upgrade Required](challenges/upgrade-required/readme.md)
+### Challenge 7 - [Upgrade Required](challenges/upgrade-required/readme.md)
 This is an old Perl app that needs to be upgraded to Python. Can you take on the challenge with the help of AI?
 
 **500 points**
@@ -85,7 +85,7 @@ This is an old Perl app that needs to be upgraded to Python. Can you take on the
 ## Afternoon JAM Session
 
 
-### Challenge 6 - I need an App!
+### Challenge 8 - I need an App!
 This is the final challenge of the day. In this challenge you will create an application from scratch!
 
 **1000 points**
