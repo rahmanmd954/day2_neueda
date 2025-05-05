@@ -30,6 +30,7 @@ You will be placed into groups of 3-4 people. This will be done relatively quick
 Your instructor will guide you through the challenges and provide you with the necessary resources and support to complete them successfully. However, for those of you who would appreciate a heads up, the rough plan will be as follows:
 
 Morning Session:
+
 * Introduction to the session and the challenges
 * Overview of the tools and the capabilities that they have
 * Break out into teams for the first set of challenges
@@ -37,6 +38,7 @@ Morning Session:
 Break for lunch
 
 Afternoon Session:
+
 * Break out into teams for the final afternoon challenge
 * Scores will be calculated and announced
 * Presentations from the winning teams
@@ -48,26 +50,32 @@ Note that your instructor may change this schedule based on the needs of the gro
 
 ### Challenge 1 - [No Readme](challenges/no-readme/readme.md)
 This challenge involves an application that has no readme file. Your task is to create a suitable readme file for the application.
+
 **100 points**
 
 ### Challenge 2 - [No Tests](challenges/no-tests/readme.md)
 This challenge involves the same app as challenge 1. There are no tests however, so your challenge is to create a suitable set of unit tests for the application. Do not go beyond unit tests.
+
 **400 points**
 
 ### Challenge 3 - [Find and Fix a Bug](challenges/find-and-fix-a-bug/README.md)
 This application has a bug in it. Your task is to find the bug and fix it!
+
 **200 points**
 
 ### Challenge 4 - [Upgrade Required](challenges/upgrade-required/readme.md)
 This application was last touched in 2021 and is using an old version of the software. Can you upgrade it to the latest version?
+
 **300 points**
 
 ### Challenge 5 - [Improve Performance](challenges/improve-performance/Readme.md)
 This application is slow and inefficient. Your task is to improve the performance of the application.
+
 **200 points**
 
 ### Challenge 6 - [Fix an Unresponsive Website](challenges/fix-an-unresponsive-website/README.md)
 This is a problematic React application. It has a dodgy menu option. Can you sort it out?
+
 **300 points**
 
 ### Challenge 6 - [Upgrade Required](challenges/upgrade-required/readme.md)
@@ -76,6 +84,8 @@ This is an old Perl app that needs to be upgraded to Python. Can you take on the
 
 ## Afternoon JAM Session
 
+
 ### Challenge 6 - I need an App!
 This is the final challenge of the day. In this challenge you will create an application from scratch!
+
 **1000 points**
