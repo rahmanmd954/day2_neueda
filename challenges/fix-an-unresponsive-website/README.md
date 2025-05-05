@@ -33,3 +33,5 @@ The problem occurs when you are on the **About** page - on this page, if you cli
 ## Your Task
 * Investigate the issue and using AI tools, implement a solution that ensures the menu remains responsive, even when the credits are being displayed.
 
+## Points
+400 points

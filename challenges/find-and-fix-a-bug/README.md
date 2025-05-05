@@ -13,3 +13,7 @@ The class was written using Test driven development techniques, however there is
 * Determine if the descriptions of the exceptions that could be thrown accurate.
 * As you make any changes, use the tests to check that the code still works!
 * You might also ask the GenAI tools to suggest additional tests that could be added to the test suite.
+
+## Points
+This exercise is worth up to 200 points.
+

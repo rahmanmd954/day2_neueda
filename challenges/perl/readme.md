@@ -17,5 +17,8 @@ Your solution to this challenge will be marked on the following criteria:
 - Your code works!
 - You have created a set of comprehensive unit tests that can be run to ensure that the code is working as expected.
 
-Good luck!
+## Points
+500 points
+
+
 

@@ -12,5 +12,9 @@ As you work through the challenge you may ask the GenAI tools to keep optimising
 **How quickly can you get the code to run?** 
 
 ## Notes
-* **You must not alter the bit length** of the BigIntegers being generated - the security applicaiton requires this to be set to 2000.
+* **You must not alter the bit length** of the BigIntegers being generated - the security application requires this to be set to 2000.
 * Ensure you understand the code being generated - ask the GenAI tools to explain anything you are not sure about.
+
+
+## Points
+This challenge is worth up to 200 points
