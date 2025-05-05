@@ -30,17 +30,17 @@ You will be placed into groups of 3-4 people. This will be done relatively quick
 Your instructor will guide you through the challenges and provide you with the necessary resources and support to complete them successfully. However, for those of you who would appreciate a heads up, the rough plan will be as follows:
 
 Morning Session:
-- Introduction to the session and the challenges
-- Overview of the tools and the capabilities that they have
-- Break out into teams for the first set of challenges
+* Introduction to the session and the challenges
+* Overview of the tools and the capabilities that they have
+* Break out into teams for the first set of challenges
 
 Break for lunch
 
 Afternoon Session:
-- Break out into teams for the final afternoon challenge
-- Scores will be calculated and announced
-- Presentations from the winning teams
-- Prizes (if you're lucky!) will be given out
+* Break out into teams for the final afternoon challenge
+* Scores will be calculated and announced
+* Presentations from the winning teams
+* Prizes (if you're lucky!) will be given out
 
 Note that your instructor may change this schedule based on the needs of the group. So don't hold them to it.
 
