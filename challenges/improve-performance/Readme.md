@@ -18,3 +18,9 @@ As you work through the challenge you may ask the GenAI tools to keep optimising
 
 ## Points
 This challenge is worth up to 200 points
+
+## Mark Scheme
+
+* 100 points - you have successfully solved the problem
+* 100 points - you can explain to your instructor to their satisfaction what the problem was and why the solution works
+

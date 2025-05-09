@@ -20,5 +20,8 @@ Your solution to this challenge will be marked on the following criteria:
 ## Points
 500 points
 
+## Mark Scheme
 
+* 400 points - a complete Python implementation of the required application written to a professional standard following modern pythonic coding standards 
+* 100 points - you can explain to the instructor to their satisfaction how the Perl application worked and how the new Python application has mirrored the functionality.
 

@@ -35,3 +35,9 @@ The problem occurs when you are on the **About** page - on this page, if you cli
 
 ## Points
 400 points
+
+## Mark Scheme
+
+* 200 points - fix the root problem
+* 200 points - demonstrate that you understand the root cause of the problem and can explain to your instructor to their satisfaction that you understand the code that has been generated.
+

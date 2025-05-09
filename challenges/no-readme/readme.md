@@ -16,3 +16,8 @@ Can you create a readme file for this application? It should be a good readme fi
 ## Points
 
 This readme is worth up to 100 points.
+
+
+## Mark Scheme
+
+100 - The readme makes sense to the instructor and has all the relevant sections that might be expected in production grade readme

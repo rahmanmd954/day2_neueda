@@ -14,3 +14,10 @@ If you are running out of time, create as many tests as you can. You will get po
 
 ## Points
 Up to 400 points
+
+## Mark Scheme
+
+* 200 points - a comprehensive set of unit tests including relevant edge cases
+* 200 points - you can explain to the instructor to their satisfaction that you understand why the various tests have been applied
+
+

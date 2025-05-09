@@ -81,7 +81,7 @@ This application has a bug in it. Your task is to find the bug and fix it!
 ### Challenge 4 - [Upgrade Required](challenges/upgrade-required/readme.md)
 This application was last touched in 2021 and is using an old version of the software. Can you upgrade it to the latest version?
 
-**300 points**
+**400 points**
 
 ### Challenge 5 - [Improve Performance](challenges/improve-performance/Readme.md)
 This application is slow and inefficient. Your task is to improve the performance of the application.

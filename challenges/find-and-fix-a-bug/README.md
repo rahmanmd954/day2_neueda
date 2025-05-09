@@ -17,3 +17,9 @@ The class was written using Test driven development techniques, however there is
 ## Points
 This exercise is worth up to 200 points.
 
+## Mark Scheme
+
+* 50 points - fixing the bug!
+* 50 points - quality of the fix and appropriateness of the new code
+* 50 points - quality of any additional unit tests and appropriate use of exception handling
+* 50 points - you can explain to the satisfaction of your instructor what the issue was and why the solution is appropriate
