@@ -32,7 +32,14 @@ If you are using a VM, then complete the following steps:
 6. Using **Windows Explorer**, right click on your **c:\GenAIJam** folder, and then click **Git Bash here**.
 7. At the **Git bash terminal**, right click, and then click **Paste** to paste in the git clone command, and then press **Enter**.
 
+### Set up GenAI Tools
+1. If you do not already have one, create a PERSONAL Github account
+2. Open VS Code
+3. Follow the instructions here to sign in to Copilot:
 
+[https://go.neueda.com/setup](https://go.neueda.com/setup)
+
+4. Check the course website for details of how to use the other tools.
 
 
 ## Project Teams - Playing to win or playing to learn?
