@@ -11,5 +11,7 @@ public class Main {
         Long end = System.currentTimeMillis();
         System.out.println("The time taken was " + (end - start) + " ms.");
         System.out.println("The first number found was : " + results.get(0));
+
+        // Initial -> The time taken was 44376 ms.
     }
 }
