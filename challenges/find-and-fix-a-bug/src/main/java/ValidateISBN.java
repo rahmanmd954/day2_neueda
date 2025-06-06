@@ -18,22 +18,19 @@ public class ValidateISBN {
 
 	private boolean isThisAValidShortISBN(String isbn) {
 		int total = 0;
-
-		for (int i = 0; i < SHORT_ISBN_LENGTH; i++)
-		{
+	
+		for (int i = 0; i < SHORT_ISBN_LENGTH; i++) {
 			if (!Character.isDigit(isbn.charAt(i))) {
-				if (i ==9 && isbn.charAt(i) == 'X') {
+				if (i == 9 && isbn.charAt(i) == 'X') {
 					total += 10;
-				}
-				else {
+				} else {
 					throw new NumberFormatException("ISBN numbers can only contain numeric digits");
 				}
-			}
-			else {
-				total += isbn.charAt(i) * (SHORT_ISBN_LENGTH -i);
+			} else {
+				total += (isbn.charAt(i) - '0') * (SHORT_ISBN_LENGTH - i); // Convert char to numeric value
 			}
 		}
-
+	
 		return (total % SHORT_ISBN_MULTIPLIER == 0);
 	}
 
