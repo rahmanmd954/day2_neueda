@@ -1,311 +1,128 @@
-#!/usr/bin/perl
-use File::Copy;
-
-$TABLE_NAME = "nasdaq_prices";
-$DATABASE_ENGINE = "InnoDB";
-$DEFAULT_CHARSET = "latin1";
-
-
-$filename = "prices.csv";
-
-
-open(TABLE, ">mysqlCreateSchema.sql") || die "Failed to redirect output";
-open(VALUES, ">mysqlInsertValues.sql") || die "Failed to redirect output";
-
-
-$count = 0;
-
-
-$Columns_Values = "";
-
-
-open FILE, "$filename" or die $!;
-
-
-my $columns = <FILE>;
-
-
-chop $columns;
-
-chop $columns;
-
-$columns =~ s/'/\\'/g;
-
-
-$columns =~ s/\"//;
-
-chop $columns;
-
-
-$columns =~ s/ /_/g;
-
-
-
-@Field_Names = split(",",$columns);
-
-
-$Field_Names_Count = $#Field_Names;
-
-$Field_Names_Count_Plus_One = $Field_Names_Count + 1;
-
-
-$field_count = 0;
-
-
-if ($count == 0)
-
-{
-
-$column_count = 0;
-
-   while ($column_count <= $Field_Names_Count)
-   
-   {
-      if ($column_count < $Field_Names_Count)
-   
-      {
-         $Columns_Values = $Columns_Values . $Field_Names[$column_count] . ", ";
-      }
-      
-      
-      if ($column_count == $Field_Names_Count)
-   
-      {
-         $Columns_Values = $Columns_Values . $Field_Names[$column_count];
-      }
-
-      $column_count++;
-   }
-   
-
-}
-
-$count = 0;
-
-
-while (<FILE>)
-
-{
-
-
-chomp $_;
-
-
-$_ =~ s/\"//;
-
-
-chop $_;
-
-
-@Field_Values = split(",",$_);
-
-while ($field_count <= $Field_Names_Count )
-
-{
-
-
-   $Field_Values[$field_count] =~ s/'/\\'/g;
-
-
-         if (length($Field_Values[$field_count]) < 1)
-         
-         {
-            $Field_Values[$field_count] = "0";
-         }
-
-
-         if ( $Field_Values[$field_count] =~ m/[a-zA-Z]/)
-         
-         {
-               $type[$field_count] = "varchar";
-               
-
-               if ($length[$field_count] < 'length($Field_Values[$field_count])')
-            
-               {
-                  $length[$field_count] = length($Field_Values[$field_count]);
-               }
-         }
-   
-   if ($type[$field_count] ne "varchar")
-   
-   {
-         if ( $Field_Values[$field_count] =~ m/[^a-zA-Z]/)
-   
-         {
-            if ($type[$field_count] ne "decimal")
-            
-            {
-               $type[$field_count] = "int";
-               
-               if ($length[$field_count] lt 'length($Field_Values[$field_count])')
-               {
-                  $length[$field_count] = length($Field_Values[$field_count]);
-               }
-            }
-         }
-   
-         if ( $Field_Values[$field_count] =~ m/[0-9.]/)
-   
-         {
-               @count_periods = split("\\.",$Field_Values[$field_count]);
-               $number_of_periods = $#count_periods;
-            
-            
-            if ($number_of_periods > 1)
-            
-            {
-   
-            $type[$field_count] = "varchar";
-            
-         
-               if ($length[$field_count] < 'length($Field_Values[$field_count])')
-               {
-                  $length[$field_count] = length($Field_Values[$field_count]);
-               }
-   
-   
-                  $decimal_length1[$field_count] = "";
-                  $decimal_length2[$field_count] = "";
-               }
-   
-            if ($number_of_periods == 1)
-            
-            {
-               $type[$field_count] = "decimal";
-               @split_decimal_number = split("\\.",$Field_Values[$field_count]);
-               
-               if ($decimal_length1[$field_count] lt length($split_decimal_number[0]))
-               
-               {
-                  $decimal_length1[$field_count] = length($split_decimal_number[0]);
-               }
-               
-               if ($decimal_length2[$field_count] lt length($split_decimal_number[1]))
-               
-               {
-                  $decimal_length2[$field_count] = length($split_decimal_number[1]);
-               }
-                           
-            }
-   
-         }
-                  
-         if ( $Field_Values[$field_count] =~ m/[^0-9.]/)
-         
-         {
-               $type[$field_count] = "varchar";
-   
-               if ($length[$field_count] lt 'length($Field_Values[$field_count])')
-            
-               {
-                  $length[$field_count] = length($Field_Values[$field_count]);
-               }
-   
-         }
-   
-   }
-   
-   else
-   
-   {         
-   
-               if ($length[$field_count] < length($Field_Values[$field_count]))
-            
-               {
-                  $length[$field_count] = length($Field_Values[$field_count]);
-               }
-   
-   
-   }
-   
-   
-   
-         if (length($Field_Values[$field_count]) < 1)
-         
-         {
-            $Field_Values[$field_count] = "";
-         }
-
-   
-      if ($field_count == 0)
-      
-      {
-         print VALUES "insert into $TABLE_NAME ($Columns_Values) \nvalues ('$Field_Values[$field_count]'";
-      }
-      
-         if ($field_count > 0 && $field_count < $Field_Names_Count_Plus_One)
-         
-         {
-            print VALUES ", '$Field_Values[$field_count]'";
-         }
-         
-      $field_count++;
-      }
-   
-         if ($field_count == $Field_Names_Count_Plus_One)
-         
-         {
-            $field_count = 0;
-            $count++;
-            print VALUES ");\n";
-         }
-   
-
-
-}
-
-print TABLE "\n\nCREATE TABLE `$TABLE_NAME` (\n";
-
-$count_columns = 0;
-
-
-while ($count_columns < $Field_Names_Count_Plus_One)
-
-{
-   if (length($Field_Names[$count_columns]) > 0)
-   
-   {
-      if ($type[$count_columns] =~ "decimal")
-      
-      {
-         $decimal_field_length = $decimal_length1[$count_columns] + $decimal_length2[$count_columns];
-         print TABLE " `$Field_Names[$count_columns]` $type[$count_columns] ($decimal_field_length,$decimal_length2[$count_columns])";
-      }
-      
-      else
-      
-      {
-         print TABLE " `$Field_Names[$count_columns]` $type[$count_columns] ($length[$count_columns])";
-      }
-   
-      if ($count_columns < $Field_Names_Count)
-      
-      {
-         print TABLE ",\n";
-      }
-      
-      if ($count_columns == $Field_Names_Count_Plus_One)
-      
-      {
-         print TABLE "\n\n";
-      }
-      
-   }
-
-$count_columns++;
-
-}
-
-print "Processed $column_count columns and $count lines.\n";
-
-print TABLE "\n) ENGINE=$DATABASE_ENGINE DEFAULT CHARSET=$DEFAULT_CHARSET\n";
-
-print TABLE "\n\n";
-
-close(FILE);
-
-exit;
-
-
-print "Process completed.\n";
+#!/usr/bin/env python3
+"""
+Convert prices.csv into:
+  • mysqlCreateSchema.sql – CREATE TABLE statement
+  • mysqlInsertValues.sql – INSERT statements for every row
+
+The type–inference rules match the original Perl:
+  varchar  – any value containing letters or “odd” symbols
+  decimal  – exactly one period, all other chars digits
+  int      – digits only (unless the column was already decimal)
+Lengths / precision are widened on the fly just like the Perl code.
+"""
+import csv
+from pathlib import Path
+
+# ---------------------------------------------------------------------------
+# Tunables (same names as in the Perl)
+# ---------------------------------------------------------------------------
+TABLE_NAME       = "nasdaq_prices"
+DATABASE_ENGINE  = "InnoDB"
+DEFAULT_CHARSET  = "latin1"
+CSV_FILE         = Path("prices.csv")
+
+# ---------------------------------------------------------------------------
+# Helpers
+# ---------------------------------------------------------------------------
+def looks_decimal(val: str) -> bool:
+    """digits with a single dot → decimal"""
+    if val.count(".") != 1:
+        return False
+    left, right = val.split(".")
+    return left.isdigit() and right.isdigit()
+
+def escape(val: str) -> str:
+    """SQL‑escape single quotes and drop surrounding double quotes"""
+    return val.replace("'", r"\'").strip('"')
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+with (
+    open("mysqlCreateSchema.sql", "w", encoding="utf‑8") as schema,
+    open("mysqlInsertValues.sql", "w", encoding="utf‑8") as inserts,
+    open(CSV_FILE, newline='', encoding="utf‑8") as csvfile,
+):
+    reader = csv.reader(csvfile)
+    raw_headers = next(reader)
+
+    # ----- header cleaning --------------------------------------------------
+    field_names = [
+        escape(col).replace(" ", "_")              # space → underscore
+        for col in raw_headers
+    ]
+    n_fields = len(field_names)
+    columns_clause = ", ".join(field_names)
+
+    # ----- running metadata -------------------------------------------------
+    col_type   = [""]  * n_fields            # '', 'int', 'decimal', 'varchar'
+    col_len    = [0]   * n_fields            # varchar / int length
+    dec_left   = [0]   * n_fields            # decimal( dec_left + dec_right , dec_right )
+    dec_right  = [0]   * n_fields
+
+    row_count = 0
+
+    # ----- iterate through CSV rows ----------------------------------------
+    for row in reader:
+        # pad short rows (rare but keeps logic identical to Perl)
+        while len(row) < n_fields:
+            row.append("")
+
+        # analyse / mutate each cell
+        cleaned = []
+        for i, raw in enumerate(row):
+            val = escape(raw.strip())
+
+            # treat empty string as zero when deciding numeric widths
+            test_val = val or "0"
+
+            # --- type inference / width tracking ---------------------------
+            if any(ch.isalpha() for ch in test_val):
+                # contains letters → varchar
+                col_type[i] = col_type[i] or "varchar"
+                col_len[i] = max(col_len[i], len(test_val))
+
+            elif looks_decimal(test_val):
+                # decimal
+                col_type[i] = "decimal"
+                left, right = test_val.split(".")
+                dec_left[i]  = max(dec_left[i],  len(left))
+                dec_right[i] = max(dec_right[i], len(right))
+
+            elif test_val.isdigit():
+                # integer (unless this column was already decimal)
+                if col_type[i] != "decimal":
+                    col_type[i] = col_type[i] or "int"
+                    col_len[i] = max(col_len[i], len(test_val))
+
+            else:
+                # fallback → varchar
+                col_type[i] = "varchar"
+                col_len[i] = max(col_len[i], len(test_val))
+
+            cleaned.append(val)
+
+        # --- write INSERT line ---------------------------------------------
+        inserts.write(
+            f"INSERT INTO {TABLE_NAME} ({columns_clause}) "
+            f"VALUES ({', '.join(f'\'{v}\'' for v in cleaned)});\n"
+        )
+        row_count += 1
+
+    # ----- emit CREATE TABLE -----------------------------------------------
+    schema.write(f"CREATE TABLE `{TABLE_NAME}` (\n")
+    for idx, name in enumerate(field_names):
+        if col_type[idx] == "decimal":
+            total = dec_left[idx] + dec_right[idx]
+            col_def = f"decimal({total},{dec_right[idx]})"
+        elif col_type[idx] == "int":
+            col_def = f"int({max(col_len[idx],1)})"
+        else:  # varchar (default)
+            col_def = f"varchar({max(col_len[idx],1)})"
+
+        comma = "," if idx < n_fields - 1 else ""
+        schema.write(f"  `{name}` {col_def}{comma}\n")
+
+    schema.write(f") ENGINE={DATABASE_ENGINE} DEFAULT CHARSET={DEFAULT_CHARSET};\n")
+
+print(f"Processed {n_fields} columns and {row_count} data lines.")
