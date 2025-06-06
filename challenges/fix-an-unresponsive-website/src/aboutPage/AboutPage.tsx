@@ -1,12 +1,16 @@
-import {useState} from "react";
+import {useState, useTransition} from "react";
 import Credits from "../credits/Credits";
 
 const AboutPage = () => {
 
     const [showCredits, setShowCredits] = useState(false);
+    const [isPending, startTransition] = useTransition();
 
     const handleClick = () => {
-        setShowCredits(!showCredits);
+        //setShowCredits(!showCredits);
+        startTransition(() => {
+            setShowCredits((prev) => !prev);
+        });
     }
 
     return (
